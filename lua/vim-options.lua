@@ -7,6 +7,9 @@ vim.opt.nu = true
 vim.wo.relativenumber = true
 vim.g.mapleader = " "
 
+vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
+vim.keymap.set("n", "<CS-j>", vim.cmd.terminal)
+
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true

@@ -31,6 +31,9 @@ return {
 			lspconfig.graphql.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.jedi_language_server.setup({
+				capabilities = capabilities,
+			})
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
