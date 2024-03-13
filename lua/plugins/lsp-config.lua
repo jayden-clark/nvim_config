@@ -40,6 +40,20 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+
+			local util = require("lspconfig.util")
+			lspconfig["sourcekit"].setup({
+				capabilities = capabilities,
+				cmd = {
+					"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+				},
+				root_dir = function(filename, _)
+					return util.root_pattern("buildServer.json")(filename)
+						or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+						or util.find_git_ancestor(filename)
+						or util.root_pattern("Package.swift")(filename)
+				end,
+			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
