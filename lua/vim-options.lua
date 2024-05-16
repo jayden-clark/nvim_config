@@ -10,8 +10,6 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<C-e>", vim.cmd.Ex)
 vim.keymap.set("n", "<CS-j>", vim.cmd.terminal)
 
-vim.opt.wrap = false
-
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
