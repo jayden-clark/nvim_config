@@ -44,3 +44,14 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 vim.keymap.set("n", "Q", "<nop>")
+
+-- Display the branch of the current directory
+_G.Gitbranch = function()
+    local handle = io.popen("git branch --show-current 2> /dev/null")
+    if not handle then return "" end
+    local result = handle:read("*a")
+    handle:close()
+    return result:gsub("^%s*(.-)%s*$", "%1") -- Trim leading/trailing whitespace
+end
+
+vim.o.statusline = "%{expand('%:h:t')}/%t~(%{v:lua.Gitbranch()})"
