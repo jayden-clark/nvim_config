@@ -55,3 +55,7 @@ _G.Gitbranch = function()
 end
 
 vim.o.statusline = "%{expand('%:h:t')}/%t~(%{v:lua.Gitbranch()})"
+
+if vim.fn.executable("rg") == 1 then
+  vim.opt.grepprg = "rg --vimgrep"
+end
