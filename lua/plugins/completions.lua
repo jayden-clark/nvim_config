@@ -9,6 +9,7 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
+    commit = "1e1900b",
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
